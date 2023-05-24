@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <title >Form Empleado</title>
+
+
+    <div th:insert="~{fragments/general.html :: estilo}"></div>
+</head>
+<body>
+<div th:insert="~{fragments/general.html :: header}"></div>
+
+<div class="page-header text-center">
+    <h1>Form Empleado</h1>
+
+</div>
+
+<div class="container-fluid">
+
+
+    <form method="POST" th:action="@{'/estudiante/save'}" th:object="${usuario}">
+
+
+
+
+
+        <input th:value="${usuario.getId()}" name="id" type="hidden"/>
+
+
+
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+
+                    <label  class="form-label">Nombre </label>
+                    <input  type="text" class="form-control"  th:field="*{nombres}" th:classappend="${#fields.hasErrors('nombres')?'is-invalid':''}">
+                    <div class ="invalid-feedback" th:if="${#fields.hasErrors('nombres')}" th:errors="*{nombres}"></div>
+
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="mb-3">
+
+                    <label  class="form-label">Apellido</label>
+                    <input  type="text" class="form-control"  th:field="*{apellidos}" th:classappend="${#fields.hasErrors('apellidos')?'is-invalid':''}">
+                    <div class ="invalid-feedback" th:if="${#fields.hasErrors('apellidos')}" th:errors="*{apellidos}"></div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+
+                    <label  class="form-label">DNI</label>
+                    <input  type="text" class="form-control"  th:field="*{dni}" th:classappend="${#fields.hasErrors('dni')?'is-invalid':''}">
+                    <div class ="invalid-feedback" th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></div>
+
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="mb-3">
+
+                    <label for="edad" class="form-label">Edad</label>
+                    <input  type="text" class="form-control"  th:field="*{edad}" th:classappend="${#fields.hasErrors('edad')?'is-invalid':''}">
+                    <div class ="invalid-feedback" th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}"></div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+
+                    <label  class="form-label">Correo</label>
+                    <input  type="text" class="form-control"  th:field="*{correo}" th:classappend="${#fields.hasErrors('correo')?'is-invalid':''}">
+                    <div class ="invalid-feedback" th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"></div>
+
+                </div>
+            </div>
+
+            <div class="col" th:if="${nuevo}">
+                <div class="mb-3">
+
+                    <label class="form-label">Contraseña</label>
+                    <input  type="text" class="form-control"  th:field="*{password}" th:classappend="${#fields.hasErrors('password')?'is-invalid':''}">
+                    <div class ="invalid-feedback" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+        <a th:href="${'/estudiante/lista'}" class="btn btn-danger">Cancelar</a>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+
+    </form>
+</div>
+
+
+
+
+</body>
+</html>
